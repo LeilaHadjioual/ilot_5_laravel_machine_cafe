@@ -1,0 +1,190 @@
+html, body {
+    background-color: transparent;
+    color: #636b6f;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 100;
+    height: 100vh;
+    margin: 0;
+    text-align: center;
+}
+
+#background {
+    min-width: 768px;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+}
+
+.front_section {
+    margin: auto;
+    z-index: 100;
+}
+
+.menu {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+}
+.back_section {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.back_section > div {
+    margin-bottom: 50px;
+}
+
+#machine {
+    background-image: url('../img/vue1.png');
+    width: 768px;
+    height: 1024px;
+    margin: auto;
+}
+
+#total {
+    width: auto;
+    align-self: center;
+}
+#total p{
+    font-size: 1.5em;
+}
+#total .card-body{
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.flex-row {
+    justify-content: center;
+}
+
+#displayMoney {
+    width: 91px;
+    text-align: center;
+}
+
+.flex-grow-2 {
+    flex-grow: 2;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.prepChild {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+#navbar {
+    z-index: 1000;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+footer .container {
+    padding: 10px;
+}
+
+.sticky + .content {
+    padding-top: 60px;
+}
+
+h1 {
+    color: white;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.full-height {
+    height: 100vh;
+}
+
+.jumbotron {
+    /*background-color: #baad96;*/
+    border-radius: 0%;
+    margin-bottom: 0px;
+    background-image: url('../img/jumbotron_graines_retouche.jpg');
+}
+
+.flex-center {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.position-ref {
+    position: relative;
+}
+
+.top-right {
+    position: absolute;
+    right: 10px;
+    top: 18px;
+}
+
+.links > a {
+    color: #636b6f;
+    padding: 0 25px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.m-b-md {
+    margin-bottom: 30px;
+}
+
+a {
+    color: #636b6f;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #868e92;
+    text-decoration: none;
+}
+
+.title {
+    margin-top: 51px;
+    font-size: 84px;
+}
+
+.fa-search-plus:hover {
+    font-size: x-large;
+}
+
+.toleft {
+    text-align: left;
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%
+}
+
+.custom-select {
+    background: none;
+}
+
+#selectSucre {
+    width: auto;
+}
+
+#labelSucre {
+    writing-mode: vertical-lr;
+    width: 46px;
+    margin-left: 8px;
+    text-orientation: sideways;
+}
+
+.bg-custom {
+    background-color: #ccc4b1;
+}

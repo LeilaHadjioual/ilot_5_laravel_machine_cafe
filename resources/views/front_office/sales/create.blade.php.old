@@ -1,0 +1,137 @@
+@extends('template.default_template')
+
+@section('titre')
+    Préparation des boissons
+@stop
+
+@section('content')
+
+    <div class="row flex-row">
+        @if($errors->any())
+            <div class="col-md-8 alert alert-warning alert-dismissible fade show" role="alert">
+                @foreach( $errors->all() as $error)
+                    <strong>Attention !</strong> {{ $error }}
+                @endforeach
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
+        <div class="col-md-8">
+            <form id="storeSale" action="/sales" method="post">
+                {{ csrf_field() }}
+                <div class="card border-dark">
+                    <div class="card-header bg-dark text-white">
+                        <h4>Commandez une boisson</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="prep-group row prepChild">
+                            <div class="boisson-group form-group btn-group-vertical">
+                                <label class="btn border-dark"><i class="fa fa-coffee"></i> Boissons</label>
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <button id="btn-prev" form="noform" class="btn btn-dark"><<</button>
+                                    </div>
+                                    <select name="id" id="selectDrink"
+                                            class="text-dark border-dark text-center bg-transparent custom-select custom-select-lg">
+                                        @foreach($boissons as$boisson)
+                                            <option value="{{ $boisson->id }}">{{ $boisson->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    <div class="input-group-append">
+                                        <button id="btn-next" form="noform" class="btn btn-dark">>></button>
+                                    </div>
+                                </div>
+                                <select disabled name="selectPrice" id="selectPrice"
+                                        class="btn custom-select text-dark bg-transparent border-dark">
+                                    @foreach($boissons as$boisson)
+                                        <option value="{{ $boisson->id }}">{{ $boisson->price/100 }}€</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="sucre-group form-group btn-group">
+                                <div class="btn-group-vertical input-group">
+                                    <button id="sucre-next" form="noform" class="btn btn-dark">+</button>
+                                    <select name="selectSucre" id="selectSucre"
+                                            class="btn border-dark custom-select">
+                                        <option>0</option>
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                    </select>
+                                    <button id="sucre-prev" form="noform" class="btn btn-dark">-</button>
+                                </div>
+                                <div id="labelSucre" class="btn bg-transparent border-dark">Sucres</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-header bg-dark">
+                        <div class="btn-group">
+                            <div class="btn bg-transparent text-white border-white">Monnaie</div>
+                            <input id="totalMoney" type="hidden" name="totalMoney" value="0">
+                            <div id="displayMoney" class="btn bg-transparent text-white border-white">0.00€</div>
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="row prepChild form-group">
+                            <div class="btn-group-vertical coins">
+                                <label class="btn bg-transparent border-dark">2€</label>
+                                <button form="noform" class="coin-next btn btn-dark border-dark">+</button>
+                                <div class="count btn bg-transparent border-dark">0</div>
+                                <input name="coin[200]" type="hidden" value="0">
+                                <button form="noform" class="coin-prev btn btn-dark border-dark">-</button>
+                            </div>
+
+                            <div class="btn-group-vertical coins">
+                                <label class="btn bg-transparent border-dark">1€</label>
+                                <button form="noform" class="coin-next btn btn-dark border-dark">+</button>
+                                <div class="count btn bg-transparent border-dark">0</div>
+                                <input name="coin[100]" type="hidden" value="0">
+                                <button form="noform" class="coin-prev btn btn-dark border-dark">-</button>
+                            </div>
+
+                            <div class="btn-group-vertical coins">
+                                <label class="btn bg-transparent border-dark">0.50€</label>
+                                <button form="noform" class="coin-next btn btn-dark border-dark">+</button>
+                                <div class="count btn bg-transparent border-dark">0</div>
+                                <input name="coin[50]" type="hidden" value="0">
+                                <button form="noform" class="coin-prev btn btn-dark border-dark">-</button>
+                            </div>
+
+                            <div class="btn-group-vertical coins">
+                                <label class="btn bg-transparent border-dark">0.20€</label>
+                                <button form="noform" class="coin-next btn btn-dark border-dark">+</button>
+                                <div class="count btn bg-transparent border-dark">0</div>
+                                <input name="coin[20]" type="hidden" value="0">
+                                <button form="noform" class="coin-prev btn btn-dark border-dark">-</button>
+                            </div>
+
+                            <div class="btn-group-vertical coins">
+                                <label class="btn bg-transparent border-dark">0.10€</label>
+                                <button form="noform" class="coin-next btn btn-dark border-dark">+</button>
+                                <div class="count btn bg-transparent border-dark">0</div>
+                                <input name="coin[10]" type="hidden" value="0">
+                                <button form="noform" class="coin-prev btn btn-dark border-dark">-</button>
+                            </div>
+
+                            <div class="btn-group-vertical coins">
+                                <label class="btn bg-transparent border-dark">0.05€</label>
+                                <button form="noform" class="coin-next btn btn-dark border-dark">+</button>
+                                <div class="count btn bg-transparent border-dark">0</div>
+                                <input name="coin[5]" type="hidden" value="0">
+                                <button form="noform" class="coin-prev btn btn-dark border-dark">-</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-footer bg-dark">
+                        <button form="storeSale" class="btn btn-outline-success">Valider</button>
+                        <button form="noform" class="btn btn-outline-danger">Reset</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+@endsection

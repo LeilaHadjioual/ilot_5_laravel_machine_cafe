@@ -1,0 +1,83 @@
+table, thead, tbody {
+    display: flex;
+    flex-direction: column;
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: rgba(0, 0, 0, .05);
+}
+
+.table thead th, .table td, .table th {
+    border: none;
+}
+
+.table thead {
+    background-color: rgba(0, 0, 0, .05);
+}
+
+.table {
+    border: 1px solid rgba(0, 0, 0, .05);
+}
+
+.colory {
+    border: 1px solid rgba(0, 0, 0, .09);
+}
+
+.table thead th:first-child{
+    border-radius: 0 0 25px 25px;
+}
+
+
+tr {
+    display: flex;
+    flex-direction: row;
+}
+
+th, td {
+    flex-grow: 1;
+    flex-basis: 0;
+}
+
+.form-control {
+    width: auto;
+    display: initial;
+}
+
+.gestion_progress, #slider {
+    position: relative;
+    width: 100%;
+    vertical-align: middle;
+}
+
+#slider {
+    top: -22px;
+}
+
+.progress {
+    border-radius: 5rem;
+    background-color: transparent;
+}
+
+#slider {
+    z-index: 1;
+    padding: 0px;
+    background: transparent;
+}
+
+input[type=range]::-moz-range-track {
+    height: 0px;
+}
+
+input[type=range]::-moz-range-thumb {
+    height: 20px;
+    width: 8px;
+    border-radius: 20%;
+}
+
+.progress-bar {
+    -webkit-transition: none !important;
+    -moz-transition: none !important;
+    -o-transition: none !important;
+    -ms-transition: none !important;
+    transition: none !important;
+}
